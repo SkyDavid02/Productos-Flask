@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block title %}Página no encontrada{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+  <div class="col-md-7">
+    <div class="card shadow-sm text-center">
+      <div class="card-body py-5">
+        <p class="display-5 mb-2">404</p>
+        <h1 class="h3">Página no encontrada</h1>
+        <p class="text-muted">La ruta solicitada no existe.</p>
+        <a class="btn btn-primary" href="{{ url_for('Index') }}">Volver al inventario</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

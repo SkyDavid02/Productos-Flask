@@ -1,0 +1,43 @@
+body {
+  min-height: 100vh;
+  background: #d9a7c7;
+  background: -webkit-linear-gradient(to right, #fffcdc, #d9a7c7);
+  background: linear-gradient(to right, #fffcdc, #d9a7c7);
+}
+
+.navbar-brand {
+  letter-spacing: 0;
+}
+
+.card {
+  border: 0;
+  border-radius: 6px;
+}
+
+.card-header {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+}
+
+.btn {
+  border-radius: 4px;
+}
+
+.form-control {
+  border-radius: 4px;
+}
+
+.alert {
+  border: 0;
+  border-radius: 6px;
+}
+
+@media (max-width: 576px) {
+  .d-flex.gap-2 {
+    flex-direction: column;
+  }
+}
