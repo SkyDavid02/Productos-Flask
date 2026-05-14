@@ -10,12 +10,12 @@
     "basic": [
       {
         "key": "username",
-        "value": "admin",
+        "value": "{{username}}",
         "type": "string"
       },
       {
         "key": "password",
-        "value": "admin123",
+        "value": "{{password}}",
         "type": "string"
       }
     ]
@@ -24,9 +24,55 @@
     {
       "key": "baseUrl",
       "value": "http://127.0.0.1:3000"
+    },
+    {
+      "key": "username",
+      "value": "admin"
+    },
+    {
+      "key": "password",
+      "value": "admin123"
     }
   ],
   "item": [
+    {
+      "name": "Crear usuario",
+      "auth": {
+        "type": "noauth"
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"usuario2\",\n  \"password\": \"usuario123\",\n  \"confirmar_password\": \"usuario123\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/usuarios",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "usuarios"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Ver usuario autenticado",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/usuario",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "usuario"]
+        }
+      },
+      "response": []
+    },
     {
       "name": "Listar productos",
       "request": {

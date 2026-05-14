@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{% block title %}Inventario Flask{% endblock %}</title>
+  <title>{% block title %}Mi Almacén{% endblock %}</title>
   <link rel="stylesheet" href="https://bootswatch.com/5/materia/bootstrap.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-semibold" href="{{ url_for('Index') if session.get('usuario_id') else url_for('login') }}">Inventario Flask</a>
+      <a class="navbar-brand fw-semibold" href="{{ url_for('Index') if session.get('usuario_id') else url_for('login') }}">Mi Almacén</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Abrir navegación">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -33,6 +33,9 @@
           {% else %}
             <li class="nav-item">
               <a class="nav-link active" href="{{ url_for('login') }}">Iniciar sesión</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('register') }}">Crear cuenta</a>
             </li>
           {% endif %}
         </ul>
