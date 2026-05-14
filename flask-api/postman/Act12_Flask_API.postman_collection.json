@@ -2,8 +2,23 @@
   "info": {
     "_postman_id": "4b7d9f4d-0b1e-4c7a-b39c-act12flaskapi",
     "name": "Act12 Flask API - Productos",
-    "description": "Coleccion para probar el CRUD de productos creado con Flask y SQLite.",
+    "description": "Coleccion para probar el CRUD de productos creado con Flask, SQLite y autenticacion Basic Auth.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "admin",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "admin123",
+        "type": "string"
+      }
+    ]
   },
   "variable": [
     {

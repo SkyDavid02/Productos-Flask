@@ -1,4 +1,10 @@
+from werkzeug.security import generate_password_hash
+
 from extensions import get_db
+
+
+DEFAULT_USERNAME = "admin"
+DEFAULT_PASSWORD = "admin123"
 
 
 def row_to_dict(row):
@@ -20,7 +26,19 @@ def init_db():
         )
         """
     )
+    db.execute(
+        """
+        CREATE TABLE IF NOT EXISTS usuarios (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT NOT NULL UNIQUE,
+            password_hash TEXT NOT NULL
+        )
+        """
+    )
     db.commit()
+
+    if obtener_usuario_por_username(DEFAULT_USERNAME) is None:
+        crear_usuario(DEFAULT_USERNAME, DEFAULT_PASSWORD)
 
 
 def obtener_productos():
@@ -77,3 +95,25 @@ def eliminar_producto(producto_id):
     db = get_db()
     db.execute("DELETE FROM productos WHERE id = ?", (producto_id,))
     db.commit()
+
+
+def obtener_usuario_por_username(username):
+    db = get_db()
+    usuario = db.execute(
+        "SELECT id, username, password_hash FROM usuarios WHERE username = ?",
+        (username,),
+    ).fetchone()
+    return row_to_dict(usuario)
+
+
+def crear_usuario(username, password):
+    db = get_db()
+    cursor = db.execute(
+        "INSERT INTO usuarios (username, password_hash) VALUES (?, ?)",
+        (username, generate_password_hash(password)),
+    )
+    db.commit()
+    return {
+        "id": cursor.lastrowid,
+        "username": username,
+    }
